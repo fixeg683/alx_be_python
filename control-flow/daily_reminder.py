@@ -20,15 +20,20 @@ def main():
         else:
             print("Please answer with yes or no.")
 
-    # Generate reminder
+    # Generate reminder using match-case and if
     match priority:
         case "high":
-            message = f"'{task}' is a high priority task"
+            base_message = f"'{task}' is a high priority task"
         case "medium":
-            message = f"'{task}' is a medium priority task"
+            base_message = f"'{task}' is a medium priority task"
         case "low":
-            message = f"'{task}' is a low priority task"
+            base_message = f"'{task}' is a low priority task"
 
+    # Customize based on time-bound
     if time_bound == "yes":
-        message += " that requires immediate attention today!"
+        print(f"\nReminder: {base_message} that requires immediate attention today!")
     else:
+        print(f"\nNote: {base_message}. Consider completing it when you have free time.")
+
+if __name__ == "__main__":
+    main()
