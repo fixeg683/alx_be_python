@@ -1,5 +1,3 @@
-# shopping_list_manager.py
-
 def display_menu():
     print("Shopping List Manager")
     print("1. Add Item")
@@ -11,11 +9,12 @@ def main():
     shopping_list = []
     while True:
         display_menu()
-        try:
-            choice = int(input("Enter your choice: "))
-        except ValueError:
+        choice_input = input("Enter your choice: ")
+        if not choice_input.isdigit():
             print("Invalid input. Please enter a number.")
             continue
+
+        choice = int(choice_input)
 
         if choice == 1:
             item = input("Enter item to add: ").strip()
