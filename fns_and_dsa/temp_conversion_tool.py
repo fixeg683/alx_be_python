@@ -1,23 +1,40 @@
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5/9
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5  # Fixed: removed spaces around /
+def display_menu():
+    print("\nShopping List Manager")
+    print("1. Add item")
+    print("2. View list")
+    print("3. Remove item")
+    print("4. Exit")
 
-def convert_to_celsius(fahrenheit):
-    return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
+def main():
+    shopping_list = []
 
-def convert_to_fahrenheit(celsius):
-    return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
+    while True:
+        display_menu()
+        try:
+            choice = int(input("Enter your choice (1-4): "))
+            
+            if choice == 1:
+                item = input("Enter the item to add: ")
+                shopping_list.append(item)
+                print(f"'{item}' added to the shopping list.")
+            elif choice == 2:
+                print("\nYour shopping list:")
+                for i, item in enumerate(shopping_list, start=1):
+                    print(f"{i}. {item}")
+            elif choice == 3:
+                index = int(input("Enter the item number to remove: "))
+                if 1 <= index <= len(shopping_list):
+                    removed = shopping_list.pop(index - 1)
+                    print(f"Removed '{removed}' from the shopping list.")
+                else:
+                    print("Invalid item number.")
+            elif choice == 4:
+                print("Exiting the program.")
+                break
+            else:
+                print("Invalid choice. Please enter a number between 1 and 4.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 if __name__ == "__main__":
-    try:
-        temp_input = input("Enter the temperature to convert: ")
-        temp = float(temp_input)
-        unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
-
-        if unit == "F":
-            print(f"{temp}°F is {convert_to_celsius(temp):.2f}°C")
-        elif unit == "C":
-            print(f"{temp}°C is {convert_to_fahrenheit(temp):.2f}°F")
-        else:
-            print("Invalid unit. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
-    except ValueError:
-        print("Invalid temperature. Please enter a numeric value.")  # Changed from `raise` to `print` to satisfy check
+    main()
