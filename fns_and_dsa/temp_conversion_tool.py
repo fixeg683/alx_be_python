@@ -14,7 +14,8 @@ def main():
             choice = int(input("Enter your choice (1-4): "))
             
             if choice == 1:
-                item = input("Enter the item to add: ")
+                # Removed trailing space from prompt
+                item = input("Enter the item to add:")  
                 shopping_list.append(item)
                 print(f"'{item}' added to the shopping list.")
             elif choice == 2:
