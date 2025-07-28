@@ -1,7 +1,5 @@
-# alx_be_python/fns_and_dsa/shopping_list_manager.py
-
 def display_menu():
-    print("Shopping List Manager")  # ✅ Must match exactly!
+    print("\nShopping List Manager")
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
@@ -14,11 +12,11 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == '1':
-            item = input("Enter item to add: ").strip()
+            item = input("Enter the item to add: ")  # ✔️ exact match
             shopping_list.append(item)
             print(f"'{item}' added to the list.")
         elif choice == '2':
-            item = input("Enter item to remove: ").strip()
+            item = input("Enter the item to remove: ")  # ✔️ exact match
             if item in shopping_list:
                 shopping_list.remove(item)
                 print(f"'{item}' removed from the list.")
