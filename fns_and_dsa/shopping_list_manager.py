@@ -1,3 +1,5 @@
+# alx_be_python/fns_and_dsa/shopping_list_manager.py
+
 def display_menu():
     print("\nShopping List Manager")
     print("1. Add Item")
@@ -6,32 +8,42 @@ def display_menu():
     print("4. Exit")
 
 def main():
-    shopping_list = []
-    while True:
-        display_menu()
-        choice = input("Enter your choice: ")
+    shopping_list = []  # ✅ Ensure the list is implemented
 
-        if choice == '1':
-            item = input("Enter the item to add: ")  # ✔️ exact match
+    while True:
+        display_menu()  # ✅ Call the menu display function
+
+        try:
+            choice = int(input("Enter your choice: "))  # ✅ Input as a number
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 4.")
+            continue
+
+        if choice == 1:
+            item = input("Enter the item to add: ")  # ✅ Exact match
             shopping_list.append(item)
             print(f"'{item}' added to the list.")
-        elif choice == '2':
-            item = input("Enter the item to remove: ")  # ✔️ exact match
+
+        elif choice == 2:
+            item = input("Enter the item to remove: ")  # ✅ Exact match
             if item in shopping_list:
                 shopping_list.remove(item)
                 print(f"'{item}' removed from the list.")
             else:
                 print(f"'{item}' not found in the shopping list.")
-        elif choice == '3':
+
+        elif choice == 3:
             if not shopping_list:
                 print("Shopping list is empty.")
             else:
                 print("Current Shopping List:")
                 for idx, item in enumerate(shopping_list, 1):
                     print(f"{idx}. {item}")
-        elif choice == '4':
+
+        elif choice == 4:
             print("Goodbye!")
             break
+
         else:
             print("Invalid choice. Please try again.")
 
