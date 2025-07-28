@@ -1,7 +1,7 @@
 # alx_be_python/fns_and_dsa/shopping_list_manager.py
 
 def display_menu():
-    print("\nShopping List Manager")
+    print("Shopping List Manager")  # ✅ Must match exactly!
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
